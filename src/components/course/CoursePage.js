@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import * as courseActions from '../../actions/courseActions';
 
 class CoursesPage extends React.Component {
     constructor(props, context) {
@@ -13,12 +15,13 @@ class CoursesPage extends React.Component {
 
     onTitleChange(event) {
         const course = this.state.course;
-        course.title = even.target.value;
+        course.title = event.target.value;
         this.setState({ course: course });
     }
 
     onClickSave() {
-        alert(`Saving ${this.state.course.title}`);
+    //dispatch below fires off actions
+        this.props.dispatch(courseActions.createCourse(this.state.course));
     }
 
     render() {
@@ -38,5 +41,16 @@ class CoursesPage extends React.Component {
     }
 }
 
-export default CoursesPage;
+// this  makes state avalaible (as props) to this page
+function mapStateToProps(state, ownProps) {
+    return {
+        courses: state.courses
+    };
+}
+
+
+
+//this decorated export syntax is to connect react to this page so they can interact
+//it looks like shit but what is doing is the first connect call returns a functionn which call the function on the right
+export default connect(mapStateToProps)(CoursesPage);
 
