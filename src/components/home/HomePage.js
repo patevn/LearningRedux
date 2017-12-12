@@ -9,7 +9,7 @@ class HomePage extends React.Component {
                 <p>React, Redux and React Router in ES6 for untra-responsive web apps.</p>
                 <Link to="about" className="btn-primary btn-lg">Learn More</Link>
             </div>
-        )
+        );
     }
 }
 

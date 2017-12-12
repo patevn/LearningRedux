@@ -46,14 +46,17 @@ class CoursesPage extends React.Component {
     }
 }
 
+CoursesPage.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    courses: PropTypes.array.isRequired
+};
+
 // this  makes state avalaible (as props) to this page
 function mapStateToProps(state, ownProps) {
     return {
         courses: state.courses
     };
 }
-
-
 
 //this decorated export syntax is to connect react to this page so they can interact
 //it looks like shit but what is doing is the first connect call returns a functionn which call the function on the right
