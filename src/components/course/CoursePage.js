@@ -51,6 +51,8 @@ CoursesPage.propTypes = {
     courses: PropTypes.array.isRequired
 };
 
+//everything below here is redux stuff
+
 // this  makes state avalaible (as props) to this page
 function mapStateToProps(state, ownProps) {
     return {
